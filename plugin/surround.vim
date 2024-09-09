@@ -231,6 +231,17 @@ function! s:wrap(string,char,type,removed,special)
         let after = ' ' . after
       endif
     endif
+  elseif newchar ==# 'm' || newchar ==# 'M'
+    let fnc = input('macro: ')
+    if fnc != ""
+      let s:input = fnc."\<CR>"
+      let before = substitute(fnc,'{$','','').'{'
+      let after  = '}'
+      if newchar ==# 'M'
+        let before .= ' '
+        let after = ' ' . after
+      endif
+    endif
   elseif newchar ==# "\<C-F>"
     let fnc = input('function: ')
     let s:input = fnc."\<CR>"
