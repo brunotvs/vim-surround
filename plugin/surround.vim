@@ -232,10 +232,10 @@ function! s:wrap(string,char,type,removed,special)
       endif
     endif
   elseif newchar ==# 'm' || newchar ==# 'M'
-    let fnc = input('macro: ')
+    let fnc = input('macro: \')
     if fnc != ""
       let s:input = fnc."\<CR>"
-      let before = substitute(fnc,'{$','','').'{'
+      let before = '\' . substitute(substitute(fnc, '^\','',''),'{$','','').'{'
       let after  = '}'
       if newchar ==# 'M'
         let before .= ' '
